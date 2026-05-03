@@ -53,6 +53,7 @@ const Manager = () => {
         if (form.site.length > 3 && form.username.length > 3 && form.password.length > 3) {
 
             //If any such id exists in bd, deleted it
+            
             await fetch("http://localhost:3000/", { method: "DELETE", headers: { "content-Type": "application/json" }, body: JSON.stringify({ id: form.id }) })
 
             setPasswordArray([...passwordArray, { ...form, id: uuidv4() }])
@@ -85,7 +86,7 @@ const Manager = () => {
         if (c) {
             setPasswordArray(passwordArray.filter(item => item.id !== id))
             // localStorage.setItem("passwords", JSON.stringify(passwordArray.filter(item => item.id !== id)))
-            let res = await fetch("http://localhost:3000/", { method: "DELETE", headers: { "content-Type": "application/json" }, body: JSON.stringify({ id: form.id }) })
+            let res = await fetch("http://localhost:3000/", { method: "DELETE", headers: { "content-Type": "application/json" }, body: JSON.stringify({ id }) })
             toast('password deleted', {
                 position: "top-right",
                 autoClose: 5000,
