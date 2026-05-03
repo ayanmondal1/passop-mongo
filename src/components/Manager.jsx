@@ -85,7 +85,7 @@ const Manager = () => {
         if (c) {
             setPasswordArray(passwordArray.filter(item => item.id !== id))
             // localStorage.setItem("passwords", JSON.stringify(passwordArray.filter(item => item.id !== id)))
-            let res = await fetch("http://localhost:3000/", { method: "DELETE", headers: { "content-Type": "application/json" }, body: JSON.stringify({ id }) })
+            let res = await fetch("http://localhost:3000/", { method: "DELETE", headers: { "content-Type": "application/json" }, body: JSON.stringify({ id: form.id }) })
             toast('password deleted', {
                 position: "top-right",
                 autoClose: 5000,
